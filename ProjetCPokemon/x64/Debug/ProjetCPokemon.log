@@ -1,0 +1,6 @@
+﻿  function.c
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(74,8): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(94,8): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
+  main.c
+  Génération de code en cours...
+  ProjetCPokemon.vcxproj -> C:\Users\USER-1\source\repos\ProjetCPokemon\x64\Debug\ProjetCPokemon.exe
