@@ -1,5 +1,0 @@
-﻿  function.c
-C:\Users\USER-1\source\repos\Simlator_Pokemon\Simlator_Pokemon\function.c(37,8): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\USER-1\source\repos\Simlator_Pokemon\Simlator_Pokemon\function.c(58,8): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\USER-1\source\repos\Simlator_Pokemon\Simlator_Pokemon\function.c(68,4): warning C4013: 'CreateOurPokemon' non défini(e) ; extern retournant int pris par défaut
-C:\Users\USER-1\source\repos\Simlator_Pokemon\Simlator_Pokemon\function.c(107,6): error C2371: 'CreateOurPokemon' : redéfinition ; types de base différents
