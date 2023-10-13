@@ -1,6 +1,34 @@
 ﻿  function.c
-C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(74,8): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
-C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(94,8): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  main.c
-  Génération de code en cours...
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(136,16): warning C4047: 'fonction' : les niveaux d'indirection de 'Player *' et de 'Player **' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(136,16): warning C4024: 'PokemonChoose' : types différents pour le paramètre formel et réel 1
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(137,21): warning C4047: 'fonction' : les niveaux d'indirection de 'Player *' et de 'Player **' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(137,21): warning C4024: 'RandomActionChoose' : types différents pour le paramètre formel et réel 1
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(138,20): warning C4047: 'fonction' : les niveaux d'indirection de 'Player *' et de 'Player **' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(138,20): warning C4024: 'PokemonChooseOrdi' : types différents pour le paramètre formel et réel 1
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(138,30): warning C4020: 'PokemonChooseOrdi' : paramètres réels trop nombreux
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(140,29): warning C4047: 'fonction' : les niveaux d'indirection de 'Player *' et de 'Player **' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(140,29): warning C4024: 'ActionChoose' : types différents pour le paramètre formel et réel 1
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(141,18): warning C4047: 'fonction' : les niveaux d'indirection de 'Player *' et de 'Player **' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(141,18): warning C4024: 'ActionOnPokemon' : types différents pour le paramètre formel et réel 1
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(141,28): warning C4047: 'fonction' : les niveaux d'indirection de 'Player *' et de 'Player **' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(141,28): warning C4024: 'ActionOnPokemon' : types différents pour le paramètre formel et réel 2
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(141,38): warning C4047: 'fonction' : les niveaux d'indirection de 'char *' et de 'char' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(141,38): warning C4024: 'ActionOnPokemon' : types différents pour le paramètre formel et réel 3
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(142,15): warning C4047: 'fonction' : les niveaux d'indirection de 'Player *' et de 'Player **' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(142,15): warning C4024: 'CheckIfIsDie' : types différents pour le paramètre formel et réel 1
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(279,53): warning C4047: 'fonction' : les niveaux d'indirection de 'int *' et de 'int' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(279,53): warning C4024: 'SimpleAttack' : types différents pour le paramètre formel et réel 4
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(285,30): warning C4047: 'fonction' : les niveaux d'indirection de 'int *' et de 'int' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(285,30): warning C4024: 'SpecialAttack' : types différents pour le paramètre formel et réel 2
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(285,55): warning C4047: 'fonction' : les niveaux d'indirection de 'int *' et de 'int' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(285,55): warning C4024: 'SpecialAttack' : types différents pour le paramètre formel et réel 4
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(285,66): warning C4047: 'fonction' : les niveaux d'indirection de 'int *' et de 'int' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(285,66): warning C4024: 'SpecialAttack' : types différents pour le paramètre formel et réel 5
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(285,87): warning C4047: 'fonction' : les niveaux d'indirection de 'int *' et de 'int' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(285,87): warning C4024: 'SpecialAttack' : types différents pour le paramètre formel et réel 7
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(356,2): warning C4047: 'return' : les niveaux d'indirection de 'char' et de 'char [100]' sont différents
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(428,8): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(454,8): warning C4244: 'fonction' : conversion de 'time_t' en 'unsigned int', perte possible de données
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(518,60): warning C4305: 'initialisation' : troncation de 'int' à 'char'
+C:\Users\USER-1\source\repos\ProjetCPokemon\ProjetCPokemon\function.c(356): warning C4172: retourne l'adresse d'une variable locale ou : choiceAction temporaire
   ProjetCPokemon.vcxproj -> C:\Users\USER-1\source\repos\ProjetCPokemon\x64\Debug\ProjetCPokemon.exe

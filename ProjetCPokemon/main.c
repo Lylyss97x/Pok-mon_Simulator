@@ -13,15 +13,38 @@ int main() {
 	struct Player Play1 = { 0, false, false };
 	struct Player Play2 = { 1 , false, false };
 
-	InitializeOurDeck(&Play1);
-	InitializeOurDeck(&Play2);
+
+
+	InitializeOurDeck(&Play1,0);
+	InitializeOurDeck(&Play2,1);
 
 	displayInformation(&Play1);
 
-	/*Define who start*/
-	/*defineWhoIsFirst(&Play1);*/
 
-	return 0;
+	/*Define who start*/
+	defineWhoIsFirst(&Play1,&Play2);
+
+
+	for (int i = 0 ; i < 10; i++) {
+
+		if (Play1.cardPlayed == false) {
+		PokemonChoose(&Play1);
+		PokemonChooseOrdi(&Play1,&Play2);
+		}
+
+	RandomActionChoose(&Play2);
+	char action = ActionChoose(&Play1);
+
+	ActionOnPokemon(&Play1,&Play2, action);
+
+	}
+
+
+	
+
+
+
+
 
 }
 
