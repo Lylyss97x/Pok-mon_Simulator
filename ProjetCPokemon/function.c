@@ -9,7 +9,7 @@
 void CreateOurPokemon(int idPok, bool strenght, bool durability, const char* name, const char* type, bool inGame, struct Player* playerConcerned, int index);
 char ActionChoose(struct Player* player1);
 void PokemonChooseOrdi(struct Player* player2);
-void RandomActionChoose(struct Player* player2);
+char RandomActionChoose(struct Player* player2);
 void ActionOnPokemon(struct Player* player1, struct Player* player2, char* action);
 void PokemonChoose(struct Player* player1);
 void CheckIfIsDie(struct Player* player1);
@@ -41,6 +41,7 @@ struct Player {
 
 
 	int id;
+	char name;
 	bool turn;
 	bool cardPlayed;
 	char action[50];
@@ -52,18 +53,15 @@ struct Player {
 
 void ShieldTouched(int atkPokemon, struct Player* player2) {
 
-	printf_s(" SHLD %d", player2->Deck[player2->PokemonPlay].shield);
 
 	int leftdamage = player2->Deck[player2->PokemonPlay].shield - atkPokemon;
-	printf_s(" ATK %d", atkPokemon);
 
 	if (leftdamage < 0) {
 		player2->Deck[player2->PokemonPlay].shield = 0;
-		printf_s(" %d", leftdamage);
-		printf_s(" %d", player2->Deck[player2->PokemonPlay].shield);
 
 		player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint - abs(leftdamage);
 		printf_s("Shield broken ! \n");
+		printf_s("Pokemon Attacked : %d\n", player2->name);
 		printf_s("Pokemon hp left :  %d \n", player2->Deck[player2->PokemonPlay].healPoint);
 		printf_s("\n");
 
@@ -83,6 +81,7 @@ void ShieldTouched(int atkPokemon, struct Player* player2) {
 }
 
 
+
 void EventDuringSimpleAttack( int atkPokemon, int idPoke2, int strenght1, int strenght2, int *shieldPokemon2,struct Player* player2) {
 
 	if ((idPoke2) == strenght1 || (idPoke2) == strenght2) {
@@ -93,6 +92,7 @@ void EventDuringSimpleAttack( int atkPokemon, int idPoke2, int strenght1, int st
 			
 			player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint;
 			printf_s("Your damage is boost !\n");
+			printf_s("Pokemon Attacked : %d\n", player2->name);
 			printf_s("Pokemon hp left :  %d \n", player2->Deck[player2->PokemonPlay].healPoint);
 			printf_s("\n");
 
@@ -112,6 +112,7 @@ void EventDuringSimpleAttack( int atkPokemon, int idPoke2, int strenght1, int st
 			player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint - atk;
 			player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint;
 			printf_s("Your damage is boost !\n");
+			printf_s("Pokemon Attacked : %d\n", player2->name);
 			printf_s("Pokemon hp left :  %d \n", player2->Deck[player2->PokemonPlay].healPoint);
 			printf_s("\n");
 
@@ -127,7 +128,6 @@ void EventDuringSimpleAttack( int atkPokemon, int idPoke2, int strenght1, int st
 		
 
 }
-
 
 
 void Play(struct Player* player1, struct Player* player2) {
@@ -174,6 +174,8 @@ void SimpleAttack(int idPoke1, int atkPokemon, int idPoke2,  int *shieldPokemon2
 
 }
 
+
+
 bool CheckIfGameisOver(struct Player* player1) {
 	int nbDeath = 0;
 	for (int i = 0; i < 3; i++) {
@@ -192,14 +194,19 @@ bool CheckIfGameisOver(struct Player* player1) {
 	}
 }
 
+
+
 void CheckIfIsDie(struct Player* player1) {
 	for (int i = 0; i < 3; i++) {
 		if (player1->Deck[i].healPoint <= 0) {
 			player1->Deck[i].isDie = true;
+			printf_s("Your Pokemon is die");
 		}
 	}
 	
 }
+
+
 
 
 void Dodge(int idPoke1, struct Player* player1) {
@@ -211,21 +218,23 @@ void Dodge(int idPoke1, struct Player* player1) {
 }
 
 
-void SpecialAttack(int idPoke1, int* atkPokemon, int idPoke2, int* hpPokemon2, int* hpPokemon, struct Player* player2, int *shieldPokemon) {
+
+
+void SpecialAttack(int idPoke1, int atkPokemon, int idPoke2,  int* hpPokemon, struct Player* player2, struct Player* player1, int *shieldPokemon) {
 
 	if (idPoke1 == 1) {
 
-		*atkPokemon = *atkPokemon * 3;
+		atkPokemon = atkPokemon * 3;
 		printf_s("Fire Attack Increase !");
-		printf_s("Attack %d \n", *atkPokemon);
+		printf_s("Attack %d \n", atkPokemon);
 
 
 	}
 
 	if (idPoke1 == 2) {
-		*hpPokemon = *hpPokemon +100;
+		player1->Deck[player1->PokemonPlay].healPoint = player1->Deck[player1->PokemonPlay].healPoint + 100;
 		printf_s("Heal by Water ! \n");
-		printf_s("HP %d \n", *hpPokemon);
+		printf_s("HP %d \n", player1->Deck[player1->PokemonPlay].healPoint);
 		printf_s("\n");
 
 	}
@@ -240,18 +249,19 @@ void SpecialAttack(int idPoke1, int* atkPokemon, int idPoke2, int* hpPokemon2, i
 
 	}
 
+
 	if (idPoke1 == 4) {
-		*shieldPokemon = *shieldPokemon + 50;
+
+		shieldPokemon = shieldPokemon + 50;
 		printf_s(" Shield Reinforce !");
-		printf_s(" Shield %d \n", *shieldPokemon);
+		printf_s(" Shield %d \n", shieldPokemon);
 
 
 	}
 
 
-
-
 }
+
 
 
 void ActionOnPokemon( struct Player* player1, struct Player* player2, char *act) {
@@ -259,7 +269,7 @@ void ActionOnPokemon( struct Player* player1, struct Player* player2, char *act)
 	char specialAttack[] = "Special Attack";
 	char dodge[] = "Dodge";
 
-	const char* ActionList[] = { "Simple Attack", "Special Attack", "Dodge" };
+	const char* ActionList[] = { "Simple Attack", "Special Attack"};
 
 
 	int idPokemon1 = player1->Deck[player1->PokemonPlay].id;
@@ -274,6 +284,9 @@ void ActionOnPokemon( struct Player* player1, struct Player* player2, char *act)
 
 
 
+	printf_s("Pokemon Id for player 1 : %d \n", player1->name);
+	printf_s("Pokemon Id for player 2 : %d \n", player2->name);
+	printf_s("%s \n", player1->action);
 	/*if action trigger is simple attack*/
 	if ((strcmp(player1->action, simpleAttack) == 0)) {
 		SimpleAttack(idPokemon1, atkPokemon1, idPokemon2, shieldPokemon2, player2);
@@ -285,7 +298,6 @@ void ActionOnPokemon( struct Player* player1, struct Player* player2, char *act)
 			SpecialAttack(idPokemon1, atkPokemon1, idPokemon2, hpPokemon2,hpPokemon1, player2, shieldPokemon2);
 			player1->Deck[idPokemon1].powerUse = true;
 
-
 		}
 
 		else {
@@ -293,6 +305,7 @@ void ActionOnPokemon( struct Player* player1, struct Player* player2, char *act)
 		}
 
 		if ((strcmp(player1->action, dodge) == 0)) {
+
 			Dodge(idPokemon1, player1);
 
 
@@ -304,12 +317,18 @@ void ActionOnPokemon( struct Player* player1, struct Player* player2, char *act)
 	}
 
 
-void RandomActionChoose(struct Player* player2) {
 
-	const char* ActionList[] = { "Simple Attack", "Special Attack", "Dodge" };
+
+
+char RandomActionChoose(struct Player* player2) {
+
+	const char* ActionList[] = { "Simple Attack", "Special Attack" };
 	int randomIndex = rand() % (sizeof(ActionList) / sizeof(ActionList[0]));
 	const char* actionChoose = ActionList[randomIndex];
+	printf_s("Ordi chose %s \n", actionChoose);
 	strcpy(player2->action, actionChoose);
+
+	return actionChoose;
 
 }
 	
@@ -361,6 +380,7 @@ char ActionChoose(struct Player* player1) {
 
 void PokemonChoose(struct Player* player1) {
 	if (player1->cardPlayed == false) {
+
 		int choice;
 		int min = 0;
 		int max = 2;
@@ -380,7 +400,6 @@ void PokemonChoose(struct Player* player1) {
 					printf_s("\n");
 
 					player1->PokemonPlay = choice;
-
 					break; // La valeur est valide, sortir de la boucle
 				}
 				else {

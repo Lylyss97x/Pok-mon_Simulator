@@ -10,8 +10,8 @@
 
 int main() {
 
-	struct Player Play1 = { 0, false, false };
-	struct Player Play2 = { 1 , false, false };
+	struct Player Play1 = { 0, "player 1", false, false};
+	struct Player Play2 = { 1 ,"IA", false, false};
 
 
 
@@ -21,8 +21,6 @@ int main() {
 	displayInformation(&Play1);
 
 
-	/*Define who start*/
-	defineWhoIsFirst(&Play1,&Play2);
 
 
 	for (int i = 0 ; i < 10; i++) {
@@ -32,10 +30,15 @@ int main() {
 		PokemonChooseOrdi(&Play1,&Play2);
 		}
 
-	RandomActionChoose(&Play2);
+	char action2 = RandomActionChoose(&Play2);
+	ActionOnPokemon(&Play2, &Play1, action2);
 	char action = ActionChoose(&Play1);
-
 	ActionOnPokemon(&Play1,&Play2, action);
+	
+	CheckIfIsDie(&Play1);
+	CheckIfIsDie(&Play2);
+
+
 
 	}
 

@@ -30,6 +30,7 @@ struct Player {
 
 
 	int id;
+	char name;
 	bool turn;
 	bool cardPlayed;
 	char action[50];
@@ -56,7 +57,7 @@ void PokemonChooseOrdi(struct Player* player2);
 
 void ShieldTouched(int atkPokemon, struct Player* player2);
 
-void RandomActionChoose(struct Player* player2);
+char RandomActionChoose(struct Player* player2);
 
 void EventDuringSimpleAttack( int atkPokemon, int idPoke2,  int strenght1, int strenght2, int *shieldPokemon2, struct Player* player2);
 
