@@ -51,27 +51,35 @@ struct Player {
 };
 
 
+/*Function to manage the damage depending of the shield */
 void ShieldTouched(int atkPokemon, struct Player* player2) {
 
-
 	int leftdamage = player2->Deck[player2->PokemonPlay].shield - atkPokemon;
+
+	/*We check if the dammage is superior to the hp of the shield or inferior*/
 
 	if (leftdamage < 0) {
 		player2->Deck[player2->PokemonPlay].shield = 0;
 
+		/*We use 'abs' to have a positive number and decrease the heal point of the Pokemon */
 		player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint - abs(leftdamage);
+
 		printf_s("Shield broken ! \n");
-		printf_s("Pokemon Attacked : %d\n", player2->name);
 		printf_s("Pokemon hp left :  %d \n", player2->Deck[player2->PokemonPlay].healPoint);
 		printf_s("\n");
+		printf_s("**********************************************************************\n");
+
 
 	}
 	else {
+		/*If the shield is not broken*/
 		player2->Deck[player2->PokemonPlay].shield = leftdamage;
 
 		printf_s("Shield Resist ! \n");
 		printf_s("Pokemon shield resist left :  %d \n", player2->Deck[player2->PokemonPlay].shield);
 		printf_s("\n");
+		printf_s("**********************************************************************\n");
+
 
 
 
@@ -81,20 +89,24 @@ void ShieldTouched(int atkPokemon, struct Player* player2) {
 }
 
 
-
+/*Function which will boost the attack if the Pokement element is weaker than our element */
 void EventDuringSimpleAttack( int atkPokemon, int idPoke2, int strenght1, int strenght2, int *shieldPokemon2,struct Player* player2) {
 
+	/*Conditions with the weak elements*/
 	if ((idPoke2) == strenght1 || (idPoke2) == strenght2) {
 
 		int atk = atkPokemon * 2;
+		/*If the shield is off*/
 		if (shieldPokemon2 == 0) {
+
 			player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint - atk;
-			
 			player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint;
 			printf_s("Your damage is boost !\n");
-			printf_s("Pokemon Attacked : %d\n", player2->name);
+			//printf_s("Pokemon Attacked : %d\n", player2->name);
 			printf_s("Pokemon hp left :  %d \n", player2->Deck[player2->PokemonPlay].healPoint);
 			printf_s("\n");
+			printf_s("**********************************************************************\n");
+
 
 		}
 		else {
@@ -112,9 +124,11 @@ void EventDuringSimpleAttack( int atkPokemon, int idPoke2, int strenght1, int st
 			player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint - atk;
 			player2->Deck[player2->PokemonPlay].healPoint = player2->Deck[player2->PokemonPlay].healPoint;
 			printf_s("Your damage is boost !\n");
-			printf_s("Pokemon Attacked : %d\n", player2->name);
+			//printf_s("Pokemon Attacked : %d\n", player2->name);
 			printf_s("Pokemon hp left :  %d \n", player2->Deck[player2->PokemonPlay].healPoint);
 			printf_s("\n");
+			printf_s("**********************************************************************\n");
+
 
 		}
 		else {
@@ -126,7 +140,6 @@ void EventDuringSimpleAttack( int atkPokemon, int idPoke2, int strenght1, int st
 
 		
 		
-
 }
 
 
@@ -201,6 +214,8 @@ void CheckIfIsDie(struct Player* player1) {
 		if (player1->Deck[i].healPoint <= 0) {
 			player1->Deck[i].isDie = true;
 			printf_s("Your Pokemon is die");
+			printf_s("\n");
+
 		}
 	}
 	
@@ -227,6 +242,8 @@ void SpecialAttack(int idPoke1, int atkPokemon, int idPoke2,  int* hpPokemon, st
 		atkPokemon = atkPokemon * 3;
 		printf_s("Fire Attack Increase !");
 		printf_s("Attack %d \n", atkPokemon);
+		printf_s("\n");
+
 
 
 	}
@@ -244,6 +261,8 @@ void SpecialAttack(int idPoke1, int atkPokemon, int idPoke2,  int* hpPokemon, st
 		for (int i = 0; i < 3; i++) {
 			player2->Deck[i].healPoint = player2->Deck[i].healPoint - 50;
 			printf_s(" HP %d \n", player2->Deck[i].healPoint);
+			printf_s("\n");
+
 				
 		}
 
@@ -255,6 +274,8 @@ void SpecialAttack(int idPoke1, int atkPokemon, int idPoke2,  int* hpPokemon, st
 		shieldPokemon = shieldPokemon + 50;
 		printf_s(" Shield Reinforce !");
 		printf_s(" Shield %d \n", shieldPokemon);
+		printf_s("\n");
+
 
 
 	}
@@ -284,9 +305,11 @@ void ActionOnPokemon( struct Player* player1, struct Player* player2, char *act)
 
 
 
-	printf_s("Pokemon Id for player 1 : %d \n", player1->name);
-	printf_s("Pokemon Id for player 2 : %d \n", player2->name);
+	//printf_s("Pokemon Id for player 1 : %d \n", player1->name);
+	//printf_s("Pokemon Id for player 2 : %d \n", player2->name);
 	printf_s("%s \n", player1->action);
+	//printf_s("\n");
+
 	/*if action trigger is simple attack*/
 	if ((strcmp(player1->action, simpleAttack) == 0)) {
 		SimpleAttack(idPokemon1, atkPokemon1, idPokemon2, shieldPokemon2, player2);
@@ -318,14 +341,14 @@ void ActionOnPokemon( struct Player* player1, struct Player* player2, char *act)
 
 
 
-
-
 char RandomActionChoose(struct Player* player2) {
 
 	const char* ActionList[] = { "Simple Attack", "Special Attack" };
 	int randomIndex = rand() % (sizeof(ActionList) / sizeof(ActionList[0]));
 	const char* actionChoose = ActionList[randomIndex];
 	printf_s("Ordi chose %s \n", actionChoose);
+	printf_s("\n");
+
 	strcpy(player2->action, actionChoose);
 
 	return actionChoose;
@@ -340,6 +363,8 @@ char ActionChoose(struct Player* player1) {
 	char choiceAction[100];
 
 	printf_s("Choose what you want to do: ");
+	printf_s("\n");
+
 	fgets(choiceAction, sizeof(choiceAction), stdin);
 	choiceAction[strcspn(choiceAction, "\n")] = '\0';
 
@@ -353,7 +378,6 @@ char ActionChoose(struct Player* player1) {
 	}
 
 	while (!validChoice) {
-		printf_s("Invalid choice. Please choose again: ");
 		printf_s("\n");
 
 		fgets(choiceAction, sizeof(choiceAction), stdin);
@@ -467,8 +491,6 @@ void defineWhoIsFirst(struct Player* player1, struct Player* player2) {
 	}
 
 
-
-
 void InitializeOurDeck(struct Player* playerConcerned, int NumbPlayer) {
 	srand(time(NULL));
 
@@ -552,16 +574,8 @@ void CreateOurPokemon(int idPok, bool strenght, bool durability, const char* nam
 
 
 
-
-
-
-
-
-
-
-
-
 }
+
 
 
 
